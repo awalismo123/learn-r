@@ -4,7 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn R - Simple Tutorial</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset some defaults */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: #04AA6D;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: #333;
+      overflow: hidden;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #575757;
+    }
+    nav a.active {
+      background: #04AA6D;
+    }
+
+    /* Main Content */
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    /* Headings */
+    h2 {
+      color: #04AA6D;
+    }
+
+    /* Code Blocks */
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    /* Footer */
+    footer {
+      background: #04AA6D;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      nav a {
+        padding: 14px 10px;
+        font-size: 14px;
+      }
+    }
+
+    /* Additional content styling */
+    .example {
+      background-color: #f9f9f9;
+      border-left: 4px solid #04AA6D;
+      padding: 10px;
+      margin: 15px 0;
+    }
+
+    .note {
+      background-color: #fffacd;
+      border-left: 4px solid #ffd700;
+      padding: 10px;
+      margin: 15px 0;
+      font-style: italic;
+    }
+
+    /* Language switch */
+    .lang-switch {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      padding: 5px 10px;
+      background: #04AA6D;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #04AA6D;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,49 +149,243 @@
 
 <!-- Navigation -->
 <nav>
-  <a href="#intro">Introduction</a>
-  <a href="#install">Install R</a>
-  <a href="#syntax">Basic Syntax</a>
-  <a href="#variables">Variables</a>
-  <a href="#vectors">Vectors</a>
-  <a href="#plotting">Plotting</a>
+  <a href="#intro" class="nav-link active">Introduction</a>
+  <a href="#install" class="nav-link">Install R</a>
+  <a href="#syntax" class="nav-link">Basic Syntax</a>
+  <a href="#variables" class="nav-link">Variables</a>
+  <a href="#vectors" class="nav-link">Vectors</a>
+  <a href="#dataframes" class="nav-link">Data Frames</a>
+  <a href="#functions" class="nav-link">Functions</a>
+  <a href="#plotting" class="nav-link">Plotting</a>
 </nav>
 
 <!-- Main Content -->
 <main>
   <section id="intro">
     <h2>1. What is R?</h2>
-    <p>R is a programming language used for statistics, data analysis, and creating visual graphs.</p>
+    <p>R is a programming language used for statistics, data analysis, and creating visual graphs. It was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand.</p>
+    
+    <div class="note">
+      R is widely used among statisticians and data miners for developing statistical software and data analysis.
+    </div>
+    
+    <h3>Why Learn R?</h3>
+    <ul>
+      <li>Free and open-source</li>
+      <li>Powerful statistical capabilities</li>
+      <li>Excellent data visualization</li>
+      <li>Large community and packages</li>
+      <li>Widely used in academia and industry</li>
+    </ul>
   </section>
 
   <section id="install">
     <h2>2. Install R</h2>
-    <p>Download R from <a href="https://cran.r-project.org/" target="_blank">CRAN</a> and install it. 
-       Also download <a href="https://posit.co/download/rstudio-desktop/" target="_blank">RStudio</a> for easier coding.</p>
+    <p>Download R from <a href="https://cran.r-project.org/" target="_blank">CRAN</a> (Comprehensive R Archive Network) and install it. CRAN is the official repository for R and provides the latest stable version of R along with thousands of packages.</p>
+    
+    <p>For a better coding experience, also download <a href="https://posit.co/download/rstudio-desktop/" target="_blank">RStudio</a> (formerly RStudio IDE), which is an integrated development environment specifically designed for R. RStudio provides a user-friendly interface with features like syntax highlighting, code completion, and integrated help.</p>
+    
+    <div class="example">
+      <h3>Installation Steps:</h3>
+      <ol>
+        <li>Go to <a href="https://cran.r-project.org/" target="_blank">https://cran.r-project.org/</a></li>
+        <li>Select your operating system (Windows, macOS, or Linux)</li>
+        <li>Download the base R installation</li>
+        <li>Install R on your computer</li>
+        <li>Download RStudio Desktop from <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Posit</a></li>
+        <li>Install RStudio</li>
+        <li>Launch RStudio and start coding!</li>
+      </ol>
+    </div>
   </section>
 
   <section id="syntax">
-    <h2>3. Basic Syntax - Hello World</h2>
+    <h2>3. Basic Syntax</h2>
+    <p>R uses a simple syntax for performing operations. Here are some basic examples:</p>
+    
+    <h3>Hello World</h3>
     <pre><code>print("Hello World!")</code></pre>
+    
+    <h3>Basic Arithmetic</h3>
+    <pre><code># Addition
+result <- 5 + 3
+print(result)
+
+# Subtraction
+result <- 10 - 4
+print(result)
+
+# Multiplication
+result <- 6 * 7
+print(result)
+
+# Division
+result <- 15 / 3
+print(result)</code></pre>
+    
+    <div class="note">
+      In R, you can use # to add comments. Comments are ignored by the interpreter and are used to explain code.
+    </div>
   </section>
 
   <section id="variables">
     <h2>4. Variables</h2>
+    <p>Variables in R are used to store values. You can assign values to variables using the assignment operator <- or =.</p>
+    
     <pre><code>x <- 10
 y <- 5
 z <- x + y
 print(z)</code></pre>
+    
+    <h3>Data Types in R</h3>
+    <p>R supports several data types:</p>
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>Numeric</td>
+        <td>Numbers (integers and decimals)</td>
+        <td>x <- 10.5</td>
+      </tr>
+      <tr>
+        <td>Character</td>
+        <td>Text strings</td>
+        <td>name <- "John"</td>
+      </tr>
+      <tr>
+        <td>Logical</td>
+        <td>Boolean values (TRUE/FALSE)</td>
+        <td>is_student <- TRUE</td>
+      </tr>
+      <tr>
+        <td>Integer</td>
+        <td>Whole numbers (with L suffix)</td>
+        <td>count <- 5L</td>
+      </tr>
+    </table>
   </section>
 
   <section id="vectors">
     <h2>5. Vectors</h2>
+    <p>Vectors are the most basic data structure in R. They contain elements of the same type. You can create vectors using the c() function (combine).</p>
+    
     <pre><code>fruits <- c("apple", "banana", "cherry")
 print(fruits[2])</code></pre>
+    
+    <h3>Vector Operations</h3>
+    <pre><code># Create a numeric vector
+numbers <- c(1, 2, 3, 4, 5)
+
+# Access elements
+print(numbers[1])  # First element
+print(numbers[3])  # Third element
+
+# Vector arithmetic
+doubled <- numbers * 2
+print(doubled)
+
+# Vector functions
+print(sum(numbers))
+print(mean(numbers))
+print(length(numbers))</code></pre>
+  </section>
+  
+  <section id="dataframes">
+    <h2>6. Data Frames</h2>
+    <p>Data frames are used to store tabular data, similar to a spreadsheet. They are the most common way to work with data in R.</p>
+    
+    <pre><code># Create a data frame
+students <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(20, 22, 21),
+  grade = c(85, 92, 78)
+)
+
+print(students)
+
+# Access specific columns
+print(students$name)
+print(students$grade)</code></pre>
+    
+    <div class="example">
+      <h3>Data Frame Functions:</h3>
+      <ul>
+        <li><strong>head(df)</strong> - Shows first 6 rows</li>
+        <li><strong>tail(df)</strong> - Shows last 6 rows</li>
+        <li><strong>str(df)</strong> - Shows structure of data frame</li>
+        <li><strong>summary(df)</strong> - Provides summary statistics</li>
+        <li><strong>nrow(df)</strong> - Number of rows</li>
+        <li><strong>ncol(df)</strong> - Number of columns</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="functions">
+    <h2>7. Functions</h2>
+    <p>Functions are reusable blocks of code that perform specific tasks. R has many built-in functions, and you can also create your own.</p>
+    
+    <pre><code># Built-in functions
+numbers <- c(1, 2, 3, 4, 5)
+print(sum(numbers))
+print(mean(numbers))
+print(sd(numbers))
+
+# Creating a custom function
+square <- function(x) {
+  return(x * x)
+}
+
+result <- square(5)
+print(result)</code></pre>
+    
+    <div class="note">
+      Function syntax: function_name <- function(parameters) { code; return(value) }
+    </div>
   </section>
 
   <section id="plotting">
-    <h2>6. Simple Plot</h2>
+    <h2>8. Plotting</h2>
+    <p>R has powerful built-in plotting capabilities. You can create various types of graphs with simple commands.</p>
+    
+    <h3>Basic Plot</h3>
     <pre><code>plot(1:10)</code></pre>
+    
+    <h3>Scatter Plot</h3>
+    <pre><code>x <- c(1, 2, 3, 4, 5)
+y <- c(2, 4, 6, 8, 10)
+plot(x, y, main="Scatter Plot", xlab="X values", ylab="Y values")</code></pre>
+    
+    <h3>Histogram</h3>
+    <pre><code># Generate random data
+data <- rnorm(100)
+hist(data, main="Histogram", xlab="Values")</code></pre>
+    
+    <div class="example">
+      <h3>Common Plot Parameters:</h3>
+      <ul>
+        <li><strong>main</strong> - Title of the plot</li>
+        <li><strong>xlab</strong> - X-axis label</li>
+        <li><strong>ylab</strong> - Y-axis label</li>
+        <li><strong>col</strong> - Color of points/bars</li>
+        <li><strong>pch</strong> - Point character</li>
+        <li><strong>lwd</strong> - Line width</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section id="resources">
+    <h2>9. Additional Resources</h2>
+    <p>Continue your R learning journey with these resources:</p>
+    <ul>
+      <li><a href="https://cran.r-project.org/" target="_blank">CRAN</a> - Comprehensive R Archive Network</li>
+      <li><a href="https://posit.co/" target="_blank">Posit</a> - RStudio and related tools</li>
+      <li><a href="https://www.rdocumentation.org/" target="_blank">R Documentation</a> - Complete R function reference</li>
+      <li><a href="https://www.datacamp.com/courses/free-introduction-to-r" target="_blank">DataCamp</a> - Interactive R tutorials</li>
+      <li><a href="https://r4ds.had.co.nz/" target="_blank">R for Data Science</a> - Free online book</li>
+    </ul>
   </section>
 </main>
 
@@ -67,5 +394,66 @@ print(fruits[2])</code></pre>
   <p>© 2025 Learn R by Ismail Abdi</p>
 </footer>
 
+<!-- Back to top button -->
+<a href="#" class="back-to-top">↑ Top</a>
+
+<script>
+  // Add active class to current navigation link
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+    
+    // Back to top button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      // Show back to top button when scrolled down
+      if (window.pageYOffset > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+      
+      // Add active class to navigation based on scroll position
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetSection.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Smooth scrolling for back to top
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 </body>
 </html>
